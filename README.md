@@ -1,10 +1,4 @@
-Here’s a professional `README.md` file for your **Stakeholder Org Chart Explorer** built with **Streamlit + AGraph**. It’s tailored for business users, clearly explains the workflow, and includes setup instructions.
 
----
-
-## ✅ `README.md`
-
-```markdown
 # 🧭 Stakeholder Org Chart Explorer
 
 An interactive **Streamlit application** that visualizes organizational hierarchy from Excel data using `streamlit-agraph`. Built for **leadership teams** to easily explore stakeholders, view their managers, direct reports, and detailed context in a beautifully structured UI.
@@ -31,16 +25,14 @@ An interactive **Streamlit application** that visualizes organizational hierarch
 ## 📊 Example Org Chart Layout
 
 ```
-
-\[2nd Degree Manager]
-↓
-\[1st Degree Manager]
-↓
-\[Selected Stakeholder]
-↓
-\[Reportee 1] \[Reportee 2]
-
-````
+  [2nd Degree Manager]
+           ↓
+   [1st Degree Manager]
+           ↓
+    [Selected Stakeholder]
+           ↓
+ [Reportee 1] [Reportee 2]
+```
 
 ---
 
@@ -67,7 +59,7 @@ Your Excel file should include columns such as:
 ```bash
 git clone https://github.com/your-org/stakeholder-org-chart
 cd stakeholder-org-chart
-````
+```
 
 ### 🧱 2. Install dependencies
 
@@ -99,47 +91,26 @@ streamlit run app.py
 
 ## 📸 Screenshots
 
-| Org Chart Example                         | Detail View Example                       |
-| ----------------------------------------- | ----------------------------------------- |
+| Org Chart Example | Detail View Example |
+|------------------|---------------------|
 | ![Org Chart](./screenshots/org_chart.png) | ![Details](./screenshots/detail_view.png) |
 
 ---
 
 ## 🙌 Credits
 
-* Built with [Streamlit](https://streamlit.io/)
-* Visualization powered by [`streamlit-agraph`](https://github.com/ChrisDelClea/streamlit-agraph)
+- Built with [Streamlit](https://streamlit.io/)
+- Visualization powered by [`streamlit-agraph`](https://github.com/ChrisDelClea/streamlit-agraph)
 
 ---
 
 ## 💼 Ideal Use Cases
 
-* Leadership stakeholder visibility
-* Account planning for B2B sales
-* Organizational intelligence tools
-* HR and org structure presentations
-
----
-
-## 🛡️ License
-
-MIT License
+- Leadership stakeholder visibility
+- Account planning for B2B sales
+- Organizational intelligence tools
+- HR and org structure presentations
 
 ---
 
 > Made with ❤️ by the Data Engineering & Insights Team
-
-```
-
----
-
-### 📌 Tip:
-Place this file in the root of your project directory.
-
-Let me know if you'd like:
-- `requirements.txt`
-- Sample Excel
-- GitHub Actions to auto-deploy
-
-Happy to help make this production-ready!
-```
