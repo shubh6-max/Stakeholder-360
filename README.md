@@ -1,5 +1,5 @@
 
-# 🧭 Stakeholder Org Chart Explorer
+# 🧭 Stakeholder 360
 
 An interactive **Streamlit application** that visualizes organizational hierarchy from Excel data using `streamlit-agraph`. Built for **leadership teams** to easily explore stakeholders, view their managers, direct reports, and detailed context in a beautifully structured UI.
 
