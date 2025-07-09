@@ -36,7 +36,7 @@ def render_info_table(title, data_dict, color="#cce5ff",name_for_link=None):
 
 
 # Page layout
-st.set_page_config(page_title="Stakeholder Org Viewer", layout="wide")
+st.set_page_config(page_title="Stakeholder Org Viewer", layout="wide",page_icon="https://media.licdn.com/dms/image/v2/D4D0BAQFSLuRei6pVZA/company-logo_200_200/B4DZfJuCNfGgAI-/0/1751435978200/themathcompany_logo?e=1756944000&v=beta&t=CkeqG4ihtOep-IGUMLTLMItiVdFJ4-TroEeSoXs1Jxw")
 
 st.markdown("""
     <style>
@@ -72,7 +72,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown("### **Stakeholder 360**",)
+st.markdown("### *Stakeholder 360*",)
 
 uploaded_file = st.file_uploader("**📂 Upload Excel File**", type=["xlsx"])
 
