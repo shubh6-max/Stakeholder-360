@@ -72,7 +72,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown("# **Stakeholder 360**",)
+st.markdown("### **Stakeholder 360**",)
 
 uploaded_file = st.file_uploader("**📂 Upload Excel File**", type=["xlsx"])
 
