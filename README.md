@@ -89,14 +89,6 @@ streamlit run app.py
 
 ---
 
-## 📸 Screenshots
-
-| Org Chart Example | Detail View Example |
-|------------------|---------------------|
-| ![Org Chart](./screenshots/org_chart.png) | ![Details](./screenshots/detail_view.png) |
-
----
-
 ## 🙌 Credits
 
 - Built with [Streamlit](https://streamlit.io/)
