@@ -59,7 +59,7 @@ st.markdown("""
     }
 
     .logo-container img {
-        width: 300px;
+        width: 150px;
         background-color: white;
         padding: 5px;
         border-radius: 8px;
@@ -144,7 +144,7 @@ if uploaded_file:
         # Config for AGraph
         # MAIN
         config = Config(
-        width="100%",
+        width="100%", # type: ignore
         height=600,
         font={"size":25},
         directed=True,
