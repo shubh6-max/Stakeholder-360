@@ -144,7 +144,8 @@ if uploaded_file:
 
         def add_node(name, title=None, color="lightblue", shape="box"):
             if pd.notna(name) and name not in added:
-                label = name if not title else f"{name}\n{title}"
+                # Combine name + title (designation)
+                label = f"{name}\n{title}" if title else name
                 nodes.append(Node(
                     id=name,
                     label=label,
@@ -154,11 +155,16 @@ if uploaded_file:
                 ))
                 added.add(name)
 
+
         # Managers
-        # Add the hidden spacer node
-        add_node(mgr_2, color="lightgray")
-        add_node(mgr_1, color="#4A90E2")
-        add_node(client, color="#6AA84F")
+        # For 2nd Degree Manager
+        add_node(mgr_2, title=df[df["Client Name"] == mgr_2]["Designation"].values[0] if mgr_2 in df["Client Name"].values else None, color="lightgray")
+
+        # For 1st Degree Manager
+        add_node(mgr_1, title=df[df["Client Name"] == mgr_1]["Designation"].values[0] if mgr_1 in df["Client Name"].values else None, color="#4A90E2")
+
+        # For selected stakeholder
+        add_node(client, title=row["Designation"], color="#6AA84F")
 
         # Edges upward
         if pd.notna(mgr_2) and pd.notna(mgr_1):
@@ -166,19 +172,19 @@ if uploaded_file:
         if pd.notna(mgr_1):
             edges.append(Edge(source=mgr_1, target=client))
 
-        # Reportees of selected client
+        # For reportees
         reportees_df = df[df["1st degree Manager"] == client]
         for _, rep in reportees_df.iterrows():
-            r_name = rep["Client Name"]
-            add_node(r_name, color="#FFF2CC")
-            edges.append(Edge(source=client, target=r_name))
-
+            rep_name = rep["Client Name"]
+            rep_title = rep["Designation"]
+            add_node(rep_name, title=rep_title, color="#FFF2CC")
+            edges.append(Edge(source=client, target=rep_name))
         # Config for AGraph
         # MAIN
         config = Config(
         width="100%", # type: ignore
-        height=600,
-        font={"size":25},
+        height=500,
+        font={"size":50},
         directed=True,
         physics=False,
         hierarchical=True,
