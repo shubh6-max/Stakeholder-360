@@ -76,15 +76,18 @@ st.markdown("### **Stakeholder 360**",)
 
 uploaded_file = st.file_uploader("**📂 Upload Excel File**", type=["xlsx"])
 
+col_filter1, col_filter2,col_filter3, col_filter4= st.columns(4)
+
 if uploaded_file:
     xls = pd.ExcelFile(uploaded_file)
-    sheet = st.selectbox("**Select Sheet**", ["-- Select Sheet --"] + xls.sheet_names)
-    # Block until valid selection
-    if sheet == "-- Select Sheet --":
-        st.warning("⚠️ Please select the updated sheet to continue.")
-        st.stop()  # 🚫 HALTS further app execution
-    else:
-        df = pd.read_excel(xls, sheet_name=sheet)
+    with col_filter1:
+        sheet = st.selectbox("**Select Sheet**", ["-- Select Sheet --"] + xls.sheet_names)
+        # Block until valid selection
+        if sheet == "-- Select Sheet --":
+            st.warning("⚠️ Please select the updated sheet to continue.")
+            st.stop()  # 🚫 HALTS further app execution
+        else:
+            df = pd.read_excel(xls, sheet_name=sheet)
     
     df["Vendor CompanyName"].fillna("-")
     
@@ -92,9 +95,38 @@ if uploaded_file:
 
     df = df.dropna(subset=["Client Name"])
 
-    # Dropdown to select person
-    client_names = df["Client Name"].dropna().unique()
-    selected_client = st.selectbox("**Select Stakeholder**", client_names)
+    with col_filter2:
+        selected_working_group = st.selectbox(
+            "**Working Group**", ["All"] + sorted(df["Working Group"].dropna().unique().tolist())
+        )
+
+    with col_filter3:
+        selected_business_function = st.selectbox(
+            "**Business Functions**", ["All"] + sorted(df["Business Functions"].dropna().unique().tolist())
+        )
+
+    # --- Apply filtering logic ---
+    filtered_df = df.copy()
+
+    if selected_working_group != "All":
+        filtered_df = filtered_df[filtered_df["Working Group"] == selected_working_group]
+
+    if selected_business_function != "All":
+        filtered_df = filtered_df[filtered_df["Business Functions"] == selected_business_function]
+
+    # --- Stakeholder dropdown ---
+    client_names = filtered_df["Client Name"].dropna().unique()
+
+    if len(client_names) == 0:
+        st.warning("⚠️ No stakeholders match the selected filters.")
+        st.stop()
+
+    with col_filter4:
+        selected_client = st.selectbox("**Select Stakeholder**", sorted(client_names))
+
+    # Work only on filtered row
+    row = filtered_df[filtered_df["Client Name"] == selected_client].iloc[0]
+
 
     if selected_client:
         # Get selected row
