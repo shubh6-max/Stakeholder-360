@@ -201,8 +201,8 @@ if uploaded_file:
                 "Business Segment": row["Business Segment"],
                 "Working Group": row["Working Group"],
                 "Business Functions": row["Business Functions"],
-                "1st Degree Manager": row["1st degree Manager"],
-                "2nd Degree Manager": row["2nd Degree Manager"]
+                # "1st Degree Manager": row["1st degree Manager"],
+                # "2nd Degree Manager": row["2nd Degree Manager"]
             })
 
             render_info_table("🧑‍🤝‍🧑 Organizational Hierarchy", {
